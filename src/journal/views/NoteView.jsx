@@ -6,6 +6,7 @@ export const NoteView = () => {
   return (
     <>
       <Grid
+        className="animate__animated animate__fadeIn animate__faster"
         container
         direction="row"
         justifyContent="space-between"
@@ -24,24 +25,24 @@ export const NoteView = () => {
           </Button>
         </Grid>
         <Grid container>
-            <TextField
-                type='text'
-                variant='filled'
-                fullWidth
-                placeholder='Ingrese un título'
-                label='Título'
-                sx={{border:'none', mb:1}}
-            />
-            <TextField
-                type='text'
-                variant='filled'
-                fullWidth
-                multiline
-                placeholder='¿Qué sucedió el dia de hoy?'
-                minRows={5}
-            />
+          <TextField
+            type="text"
+            variant="filled"
+            fullWidth
+            placeholder="Ingrese un título"
+            label="Título"
+            sx={{ border: 'none', mb: 1 }}
+          />
+          <TextField
+            type="text"
+            variant="filled"
+            fullWidth
+            multiline
+            placeholder="¿Qué sucedió el dia de hoy?"
+            minRows={5}
+          />
         </Grid>
-        <ImageGallery/>
+        <ImageGallery />
       </Grid>
     </>
   );
