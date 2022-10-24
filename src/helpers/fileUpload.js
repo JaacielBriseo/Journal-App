@@ -12,12 +12,10 @@ export const fileUpload = async (file) => {
       method: 'POST',
       body: formData,
     });
-    console.log(resp);
-    if(!resp.ok) throw new Error ('No se pudo subir imagen')
+    if (!resp.ok) throw new Error('No se pudo subir imagen');
 
-    const cloudResp = await resp.json()
-    console.log({cloudResp});
-    return cloudResp.secure_url
+    const cloudResp = await resp.json();
+    return cloudResp.secure_url;
   } catch (error) {
     console.log(error);
     throw new Error(error.message);
