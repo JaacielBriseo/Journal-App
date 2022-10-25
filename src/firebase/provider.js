@@ -43,7 +43,6 @@ export const registerUserWithEmail = async ({
   displayName,
 }) => {
   try {
-    console.log({ email, password, displayName });
     const resp = await createUserWithEmailAndPassword(
       FirebaseAuth,
       email,
@@ -59,7 +58,6 @@ export const registerUserWithEmail = async ({
       displayName,
     };
   } catch (error) {
-    console.log(error);
     return { ok: false, errorMessage: error.message };
   }
 };
