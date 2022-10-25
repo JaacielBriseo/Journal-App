@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { startAfter } from 'firebase/firestore/lite';
 export const journalSlice = createSlice({
   name: 'journal',
   initialState: {
@@ -41,6 +42,12 @@ export const journalSlice = createSlice({
       state.active.imageUrls = [...state.active.imageUrls,...action.payload]
       state.isSaving = false
     },
+    clearNotesLogout: (state) => {
+      state.isSaving = false;
+      state.messageSaved= '';
+      state.notes = [];
+      state.active = null;
+    },
     deleteNoteById: (state, action) => {},
   },
 });
@@ -55,4 +62,5 @@ export const {
   deleteNoteById,
   savingNewNote,
   setPhotosToActiveNote,
+  clearNotesLogout,
 } = journalSlice.actions;
