@@ -34,12 +34,10 @@ export const LoginPage = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log({ email, password });
     dispatch(startLoginWithEmail({ email, password }));
   };
 
   const onGoogleSignIn = () => {
-    console.log('On Google submit');
     dispatch(startGoogleSignIn());
   };
 

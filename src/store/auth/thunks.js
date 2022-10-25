@@ -18,7 +18,6 @@ export const startGoogleSignIn = () => {
     dispatch(checkingCredentials());
     const result = await signInWithGoogle();
 
-    // console.log({result})
     if (!result.ok) return dispatch(logout(result.errorMessage));
 
     dispatch(login(result));
@@ -32,31 +31,31 @@ export const startCreatingUserWithEmail = ({
 }) => {
   return async (dispatch) => {
     dispatch(checkingCredentials());
-    const {ok,uid,photoURL,errorMessage} = await registerUserWithEmail({ email, password, displayName });
+    const { ok, uid, photoURL, errorMessage } = await registerUserWithEmail({
+      email,
+      password,
+      displayName,
+    });
 
-    if(!ok) return dispatch(logout({errorMessage}))
-    dispatch(login({uid,displayName,email,photoURL}))
-    
+    if (!ok) return dispatch(logout({ errorMessage }));
+    dispatch(login({ uid, displayName, email, photoURL }));
   };
 };
 
-export const startLoginWithEmail = ({email,password}) => {
+export const startLoginWithEmail = ({ email, password }) => {
   return async (dispatch) => {
-    dispatch(checkingCredentials())
-    const result = await loginWithEmail({email,password})
-    console.log(result);
+    dispatch(checkingCredentials());
+    const result = await loginWithEmail({ email, password });
 
-    if(!result.ok) return dispatch(logout(result))
-    dispatch(login(result))
-
-  }
-
-}
+    if (!result.ok) return dispatch(logout(result));
+    dispatch(login(result));
+  };
+};
 
 export const startLogout = () => {
   return async (dispatch) => {
-    await logoutFirebase()
-    dispatch(clearNotesLogout())
-    dispatch(logout({}))
-  }
-}
+    await logoutFirebase();
+    dispatch(clearNotesLogout());
+    dispatch(logout({}));
+  };
+};

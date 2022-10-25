@@ -16,7 +16,6 @@ export const startNewNote = () => {
   return async (dispatch, getState) => {
     dispatch(savingNewNote());
     const { uid } = getState().auth;
-    console.log('startnewnote');
     const newNote = {
       title: '',
       body: '',
@@ -69,12 +68,11 @@ export const startUploadingFiles = (files = []) => {
 };
 
 export const startDeletingNote = () => {
-  return async (dispatch,getState) => {
-    const {uid} = getState().auth;
-    const {active: note} = getState().journal
-    const docRef = doc(FirebaseDB, `${uid}/journal/notas/${note.id}`)
+  return async (dispatch, getState) => {
+    const { uid } = getState().auth;
+    const { active: note } = getState().journal;
+    const docRef = doc(FirebaseDB, `${uid}/journal/notas/${note.id}`);
     await deleteDoc(docRef);
-    dispatch(deleteNoteById(note.id))
-
-  }
-}
+    dispatch(deleteNoteById(note.id));
+  };
+};
