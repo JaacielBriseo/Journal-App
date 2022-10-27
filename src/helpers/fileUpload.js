@@ -1,6 +1,6 @@
 export const fileUpload = async (file) => {
-  //if (!file) throw new Error('No tenemos ningun archivo a subir');
-  if(!file) return null
+  if (!file) throw new Error('No tenemos ningun archivo a subir');
+  // if(!file) return null  <-- descomentar esto para hacer testing y comentar lo de arriba
   const cloudUrl = 'https://api.cloudinary.com/v1_1/doyovakvf/upload';
   const formData = new FormData();
 
@@ -17,8 +17,8 @@ export const fileUpload = async (file) => {
     const cloudResp = await resp.json();
     return cloudResp.secure_url;
   } catch (error) {
-    // console.log(error);
-    // throw new Error(error.message);
-    return null;
+    console.log(error);
+    throw new Error(error.message);
+    // return null; <-- descomentar esto para hacer testing y comentar lo de arriba
   }
 };

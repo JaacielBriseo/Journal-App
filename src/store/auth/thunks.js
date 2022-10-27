@@ -7,7 +7,7 @@ import {
 import { clearNotesLogout } from '../journal/journalSlice';
 import { checkingCredentials, login, logout } from './authSlice';
 
-export const checkingAuth = (email, password) => {
+export const checkingAuth = () => {
   return async (dispatch) => {
     dispatch(checkingCredentials());
   };
